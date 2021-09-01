@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+struct Date
+{
+    int M, D, Y;
+};
+
+struct Employee
+{
+    char Name[50];
+    struct Date DOB, DOJ;
+    int Salary;
+}emp[100];
+
+int main ()
+{
+    int n, high;
+    printf("Enter Array Size : ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; ++i)
+    {
+        printf("\nEnter Name : ");
+        fflush(stdin);
+        gets(emp[i].Name);
+        printf("\nEnter Date Of Joining\n");
+        printf("(DD/MM/YY) : ");
+        fflush(stdin);
+        scanf("%d%d%d", &emp[i].DOJ.D, &emp[i].DOJ.M, &emp[i].DOJ.Y);
+        fflush(stdin);
+        printf("\nEnter Date Of Birth\n");
+        printf("(DD/MM/YY) : ");
+        fflush(stdin);
+        scanf("%d%d%d", &emp[i].DOB.D, &emp[i].DOB.M, &emp[i].DOB.Y);
+        printf("\nEnter Salary : ");
+        fflush(stdin);
+        scanf("%d", &emp[i].Salary);
+    }
+
+    high = emp[0].Salary;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(emp[i].Salary > high)
+            high = emp[i].Salary;
+    }
+
+    printf("\nEmployee With Highest Salary\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        if(emp[i].Salary == high)
+            printf("\nName : %s \nD.O.B : %d\/%d\/%d \nStarting Date : %d\/%d\/%d \nSalary : %d\n", emp[i].Name,  emp[i].DOB.D, emp[i].DOB.M, emp[i].DOB.Y, emp[i].DOJ.D, emp[i].DOJ.M, emp[i].DOJ.Y, emp[i].Salary);
+    }
+
+    return  0;
+}
